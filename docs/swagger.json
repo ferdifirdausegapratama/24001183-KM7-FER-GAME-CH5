@@ -1,0 +1,223 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Documentation",
+    "version": "1.0.0",
+    "description": "Documentation for the API"
+  },
+  "paths": {
+    "/auth/register": {
+      "post": {
+        "tags": ["Auths"],
+        "summary": "Register a new member",
+        "description": "This API is used to register a new member.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "name": {
+                    "type": "string",
+                    "example": "rahman"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "rahman@gmail.com"
+                  },
+                  "password": {
+                    "type": "string",
+                    "example": "rahman123"
+                  },
+                  "confirmPassword": {
+                    "type": "string",
+                    "example": "rahman123"
+                  },
+                  "age": {
+                    "type": "integer",
+                    "example": 20
+                  },
+                  "address": {
+                    "type": "string",
+                    "example": "Bekasi"
+                  }
+                },
+                "required": [
+                  "name",
+                  "email",
+                  "password",
+                  "confirmPassword",
+                  "age",
+                  "address"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful registration",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "dataValues": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 6
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "rahman"
+                            },
+                            "address": {
+                              "type": "string",
+                              "example": "Bekasi"
+                            },
+                            "role": {
+                              "type": "string",
+                              "example": "Member"
+                            },
+                            "age": {
+                              "type": "integer",
+                              "example": 20
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2024-10-31T07:51:28.771Z"
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2024-10-31T07:51:28.771Z"
+                            }
+                          }
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "rahman@gmail.com"
+                        },
+                        "password": {
+                          "type": "string",
+                          "example": "$2b$10$ce.K9DAs5.ygKKIdYSn5aeJn9V1SV4Ahq2LEZHjZBhchws6N3ShwO"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          },
+          "500": {
+            "description": "Internal server error"
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/auth/login": {
+      "post": {
+        "tags": ["Auths"],
+        "summary": "Login User",
+        "description": "API untuk login pengguna",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "email": {
+                  "type": "string",
+                  "example": "rahman@gmail.com"
+                },
+                "password": {
+                  "type": "string",
+                  "example": "rahman123"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Berhasil login",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "Success"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Berhasil login"
+                },
+                "data": {
+                  "type": "string",
+                  "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NiwidXNlcm5hbWUiOiJyYWhtYW4iLCJyb2xlIjoiTWVtYmVyIiwiZW1haWwiOiJyYWhtYW5AZ21haWwuY29tIiwiaWF0IjoxNzMwMzYzNTc4fQ.0d6nqyOSRq8Kp4w_2ibrYbbXUHs6NSwTOefNHoAhJVQ"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Email atau password salah",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "Failed"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "email atau password salah"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Terjadi kesalahan server",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "status": {
+                  "type": "string",
+                  "example": "Error"
+                },
+                "message": {
+                  "type": "string",
+                  "example": "Terjadi kesalahan"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "servers": [
+    {
+      "url": "http://localhost:3000/api/v1"
+    }
+  ]
+}

@@ -5,10 +5,10 @@ const morgan = require("morgan");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 
-//const ApiError = require("./utils/ApiError");
+const ApiError = require("./utils/ApiError");
 const errorHandler = require("./controllers/ErrorController");
 
-//const router = require("./routes");
+const router = require("./routes");
 
 const PORT = process.env.PORT || 3000;
 
@@ -19,7 +19,7 @@ app.use(express.json());
 
 app.use(morgan("dev"));
 
-//app.use(router);
+app.use(router);
 
 app.all("*", (req, res, next) => {
   next(new ApiError("Routes doesn't exist", 404));
