@@ -214,6 +214,398 @@
       }
     }
   },
+  "/auth/checktoken": {
+    "get": {
+      "tags": ["Auths"],
+      "summary": "Memeriksa Token Pengguna",
+      "description": "API untuk memeriksa token pengguna yang telah diautentikasi",
+      "security": [
+        {
+          "bearerToken": []
+        }
+      ],
+      "responses": {
+        "200": {
+          "description": "Token valid, mengembalikan data pengguna",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "example": "Success"
+                  },
+                  "data": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "integer",
+                        "example": 6
+                      },
+                      "name": {
+                        "type": "string",
+                        "example": "rahman"
+                      },
+                      "age": {
+                        "type": "integer",
+                        "example": 20
+                      },
+                      "address": {
+                        "type": "string",
+                        "example": "Bekasi"
+                      },
+                      "role": {
+                        "type": "string",
+                        "example": "Member"
+                      },
+                      "email": {
+                        "type": "string",
+                        "example": "rahman@gmail.com"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "401": {
+          "description": "Unauthorized, token tidak valid atau tidak ada",
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string",
+                    "example": "Failed"
+                  },
+                  "message": {
+                    "type": "string",
+                    "example": "Unauthorized, token tidak valid atau tidak ditemukan"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/auth/checktoken": {
+      "get": {
+        "tags": ["Auths"],
+        "security": [
+          {
+            "bearerToken": []
+          }
+        ],
+        "summary": "Return hasil hit API checktoken user",
+        "description": "Ini API untuk mengecek token user",
+        "responses": {
+          "200": {
+            "description": "Sukses checktoken",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "integer",
+                          "example": 12
+                        },
+                        "name": {
+                          "type": "string",
+                          "example": "fadhlan"
+                        },
+                        "age": {
+                          "type": "integer",
+                          "example": 20
+                        },
+                        "address": {
+                          "type": "string",
+                          "example": "Bogor"
+                        },
+                        "role": {
+                          "type": "string",
+                          "example": "Superadmin"
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "fadhlan@gmail.com"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Token tidak valid atau tidak ada",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Error"
+                    },
+                    "message": {
+                      "type": "string",
+                      "example": "Unauthorized"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/user": {
+      "get": {
+        "summary": "Get user information",
+        "responses": {
+          "200": {
+            "description": "A successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "dataValues": {
+                          "type": "object",
+                          "properties": {
+                            "id": {
+                              "type": "integer",
+                              "example": 17
+                            },
+                            "name": {
+                              "type": "string",
+                              "example": "nando"
+                            },
+                            "address": {
+                              "type": "string",
+                              "example": "Jombang"
+                            },
+                            "role": {
+                              "type": "string",
+                              "example": "Admin"
+                            },
+                            "age": {
+                              "type": "integer",
+                              "example": 20
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2024-11-02T21:04:37.824Z"
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2024-11-02T21:04:37.824Z"
+                            }
+                          }
+                        },
+                        "_previousDataValues": {
+                          "type": "object",
+                          "properties": {
+                            "name": {
+                              "type": "string",
+                              "example": "nando"
+                            },
+                            "address": {
+                              "type": "string",
+                              "example": "Jombang"
+                            },
+                            "role": {
+                              "type": "string",
+                              "example": "Admin"
+                            },
+                            "age": {
+                              "type": "integer",
+                              "example": 20
+                            },
+                            "id": {
+                              "type": "integer",
+                              "example": 17
+                            },
+                            "createdAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2024-11-02T21:04:37.824Z"
+                            },
+                            "updatedAt": {
+                              "type": "string",
+                              "format": "date-time",
+                              "example": "2024-11-02T21:04:37.824Z"
+                            }
+                          }
+                        },
+                        "uniqno": {
+                          "type": "integer",
+                          "example": 1
+                        },
+                        "_changed": {
+                          "type": "object"
+                        },
+                        "_options": {
+                          "type": "object",
+                          "properties": {
+                            "isNewRecord": {
+                              "type": "boolean",
+                              "example": false
+                            },
+                            "_schema": {
+                              "type": "string",
+                              "nullable": true
+                            },
+                            "_schemaDelimiter": {
+                              "type": "string",
+                              "nullable": true
+                            }
+                          }
+                        },
+                        "email": {
+                          "type": "string",
+                          "example": "nando@gmail.com"
+                        },
+                        "password": {
+                          "type": "string",
+                          "example": "$2b$10$xiV9MAJcIM/w0t/Lv3/LvORZ3MRri7XQHyObgA1we7Bu0KRRKuEdq"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "paths": {
+    "/users": {
+      "get": {
+        "summary": "Get all users",
+        "operationId": "getUsers",
+        "responses": {
+          "200": {
+            "description": "Daftar pengguna berhasil diambil.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "status": {
+                      "type": "string",
+                      "example": "Success"
+                    },
+                    "data": {
+                      "type": "object",
+                      "properties": {
+                        "users": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "integer",
+                                "example": 12
+                              },
+                              "name": {
+                                "type": "string",
+                                "example": "fadhlan"
+                              },
+                              "age": {
+                                "type": "integer",
+                                "example": 20
+                              },
+                              "address": {
+                                "type": "string",
+                                "example": "Bogor"
+                              },
+                              "role": {
+                                "type": "string",
+                                "example": "Superadmin"
+                              },
+                              "createdAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2024-11-02T20:51:20.968Z"
+                              },
+                              "updatedAt": {
+                                "type": "string",
+                                "format": "date-time",
+                                "example": "2024-11-02T20:51:20.968Z"
+                              },
+                              "Auth": {
+                                "type": "object",
+                                "properties": {
+                                  "id": {
+                                    "type": "integer",
+                                    "example": 12
+                                  },
+                                  "email": {
+                                    "type": "string",
+                                    "example": "fadhlan@gmail.com"
+                                  },
+                                  "password": {
+                                    "type": "string",
+                                    "example": "$2a$10$w21UZzMLTtQBAem8xZYqQOjw4gfv/I4x61J3SuCtMZCpVM6p5E9TC"
+                                  },
+                                  "userId": {
+                                    "type": "integer",
+                                    "example": 12
+                                  },
+                                  "createdAt": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "example": "2024-11-02T20:51:20.982Z"
+                                  },
+                                  "updatedAt": {
+                                    "type": "string",
+                                    "format": "date-time",
+                                    "example": "2024-11-02T20:51:20.982Z"
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
 
   "servers": [
     {

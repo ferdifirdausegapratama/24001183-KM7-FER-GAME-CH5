@@ -1,45 +1,47 @@
 "use strict";
 
+const bcrypt = require("bcrypt");
+
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up(queryInterface, Sequelize) {
     const users = [
       {
-        name: "ferdi",
-        age: 21,
-        address: "Jombang",
-        role: "Superadmin",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: "Muria",
+        name: "fadhlan",
         age: 20,
-        address: "Purwokerto",
+        address: "Bogor",
         role: "Superadmin",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: "Abdi",
+        name: "Juki",
         age: 20,
-        address: "Surabaya",
+        address: "Bekasi",
         role: "Superadmin",
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
-        name: "Aqsa",
-        age: 21,
-        address: "Surabaya",
-        role: "Superadmin",
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      },
-      {
-        name: "Iqmal",
+        name: "Jojo",
         age: 20,
-        address: "Kalimantan",
+        address: "Bekasi",
+        role: "Superadmin",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "Kukuh",
+        age: 22,
+        address: "Bogor",
+        role: "Superadmin",
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      },
+      {
+        name: "Tipen",
+        age: 22,
+        address: "Bekasi",
         role: "Superadmin",
         createdAt: new Date(),
         updatedAt: new Date(),
